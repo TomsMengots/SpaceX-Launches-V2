@@ -1,8 +1,7 @@
-import "./styles.css";
-import { ChakraProvider, Container } from "@chakra-ui/react";
-import { RocketLaunches } from "src/components/RocketLaunches";
-import { Header } from 'src/components/Header'
-import { Hero } from "src/components/Hero";
+import { ChakraProvider, Container } from '@chakra-ui/react';
+import { RocketLaunches } from 'src/components/RocketLaunches';
+import { Header } from 'src/components/Header';
+import { Hero } from 'src/components/Hero';
 
 export default function App() {
   return (

@@ -1,18 +1,16 @@
-import { StrictMode } from "react";
-import * as ReactDOMClient from "react-dom/client";
-import { apollo } from "./infrastructure/apollo";
-import { ApolloProvider } from "@apollo/client";
+import { StrictMode } from 'react';
+import { ApolloProvider } from '@apollo/client';
+import { apollo } from 'src/infrastructure/apollo';
+import { createRoot } from 'react-dom/client';
+import App from 'src/App';
 
-
-import App from "./App";
-
-const rootElement = document.getElementById("root");
-const root = ReactDOMClient.createRoot(rootElement);
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
     <ApolloProvider client={apollo}>
       <App />
     </ApolloProvider>
-  </StrictMode>
+  </StrictMode>,
 );

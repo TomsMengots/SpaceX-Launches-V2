@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const cache = new InMemoryCache({
   typePolicies: {
@@ -9,13 +9,13 @@ const cache = new InMemoryCache({
           merge(existing = [], incoming) {
             return [...existing, ...incoming];
           },
-        }
-      }
-    }
-  }
-})
+        },
+      },
+    },
+  },
+});
 
 export const apollo = new ApolloClient({
-  uri: "https://spacex-production.up.railway.app/",
+  uri: 'https://spacex-production.up.railway.app/',
   cache,
 });
