@@ -1,7 +1,7 @@
 import { Stack, Heading, Text, Box, Flex, Image, keyframes } from '@chakra-ui/react';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { motion } from 'framer-motion';
-import { ANIMATION_TYPE, ANIMATION } from 'src/core/services/AnimationService';
+import { ANIMATION_TYPE, ANIMATION } from 'src/core/configs/AnimationConfig';
 
 const Hero = () => {
   return (
