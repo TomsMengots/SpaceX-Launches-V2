@@ -1,4 +1,4 @@
-import { Flex, Select } from "@chakra-ui/react"
+import { Flex, Select, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 import { MdArrowDropDown } from 'react-icons/md'
 
@@ -23,7 +23,7 @@ const Filters = ({ limit, onChange }: IProps) => {
         }
 
         setSelected(target.value as any);
-        onChange(selected)
+        onChange(target.value)
     }
 
     useEffect(() => {
@@ -31,8 +31,9 @@ const Filters = ({ limit, onChange }: IProps) => {
     }, [])
 
     return (
-        <Flex marginY={8} width="100%" justifyContent="flex-end" >
-            <Select placeholder='Select option' maxW={48} icon={<MdArrowDropDown />} value={selected} onChange={onSelected}>
+        <Flex marginY={8} width="100%" justifyContent="flex-end" alignItems="center" >
+            <Text fontSize="xs" fontWeight="600" mr={2}>Launches Per Page:</Text>
+            <Select placeholder='Select option' maxW={20} icon={<MdArrowDropDown />} value={selected} onChange={onSelected}>
                 {ITEMS_PER_PAGE_OPTIONS.map((option) => (
                     <option key={option} value={option}>{option}</option>
                 ))}

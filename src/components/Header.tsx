@@ -26,6 +26,7 @@ const Header = () => {
                 onClick={toggleColorMode}
                 _focus={{ boxShadow: "none" }}
                 w="fit-content"
+                backgroundColor="transparent"
             >
                 {colorMode === ColorModeOptions.LIGHT ? <BsMoonStarsFill /> : <BsSun />}
             </Button>
