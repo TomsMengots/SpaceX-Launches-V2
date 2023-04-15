@@ -28,7 +28,7 @@ const Hero = () => {
         textTransform='uppercase'
       >
         Making Humanity <br />
-        <Text as={'span'} color={'purple.400'}>
+        <Text as={'span'} className='neonText'>
           Multiplanetary
         </Text>
         <Flex justifyContent='center' alignItems='center' w='100%' mt='12'>

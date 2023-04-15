@@ -1,0 +1,7 @@
+.neonText {
+  --clr-neon: #7d4ee5;
+  color: var(--clr-neon);
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  transition: all 0.5s;
+  animation: blink linear infinite 2s;
+}
