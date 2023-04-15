@@ -1,5 +1,8 @@
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
+import { apollo } from "./infrastructure/apollo";
+import { ApolloProvider } from "@apollo/client";
+
 
 import App from "./App";
 
@@ -8,6 +11,8 @@ const root = ReactDOMClient.createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <App />
+    <ApolloProvider client={apollo}>
+      <App />
+    </ApolloProvider>
   </StrictMode>
 );
