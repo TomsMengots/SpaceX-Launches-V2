@@ -11,7 +11,7 @@ const Header = () => {
   const textColor = useColorModeValue('black', 'white');
 
   return (
-    <Flex alignItems='center' justifyContent='space-between' w='100%' py={8}>
+    <Flex alignItems='center' justifyContent='space-between' w='100%' py={4}>
       <Stack color={textColor} w='40' fill={textColor}>
         <SpaceXLogo />
       </Stack>
