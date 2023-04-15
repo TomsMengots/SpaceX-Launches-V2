@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
 const GET_PAST_LAUNCHES = gql`
-    query getPastLaunches {
-        launchesPast {
+    query getPastLaunches($limit: Int!) {
+        launchesPast(limit: $limit) {
           mission_name
           launch_site {
             site_name_long
@@ -14,9 +14,15 @@ const GET_PAST_LAUNCHES = gql`
           }
           details
           launch_success
+          id
+          links {
+            mission_patch
+            article_link
+            video_link
+            flickr_images
+          }
         }
       }
-    
 `
 
 export { GET_PAST_LAUNCHES }
