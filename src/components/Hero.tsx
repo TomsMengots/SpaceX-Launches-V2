@@ -1,9 +1,12 @@
-import { Stack, Heading, Text, Box, Flex, Image, keyframes } from '@chakra-ui/react';
+import { Stack, Heading, Text, Box, Flex, Image, useColorMode } from '@chakra-ui/react';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { ANIMATION_TYPE, ANIMATION } from 'src/core/configs/AnimationConfig';
+import { ColorModeOptions } from 'src/core/configs/ColorModeConfig';
 
 const Hero = () => {
+  const { colorMode } = useColorMode();
+
   return (
     <Stack
       as={Box}
@@ -16,7 +19,7 @@ const Hero = () => {
       <Flex flexDirection='column' justifyContent='center' alignItems='center' w='100%'>
         <Flex justifyContent='center' alignItems='center' w='100%' mb='12'>
           <Stack as={motion.div} animation={ANIMATION[ANIMATION_TYPE.ROTATE]}>
-            <Image src='/images/moon.png' h={64} w={64} />
+            <Image src={colorMode === ColorModeOptions.LIGHT ? '/images/mars.png' : '/images/moon.png'} h={64} w={64} />
           </Stack>
         </Flex>
 
@@ -34,8 +37,10 @@ const Hero = () => {
       </Flex>
 
       <Flex justifyContent='center' alignItems='center' w='100%'>
-        <Flex fontSize={12} fontWeight={600} textTransform='uppercase' alignItems='center' flexDirection='column'>
-          <Text mb={2}>View Launch List</Text>
+        <Flex alignItems='center' flexDirection='column'>
+          <Text fontSize='xs' fontWeight={700} textTransform='uppercase' mb={2}>
+            View Launch List
+          </Text>
 
           <Flex as={motion.div} animation={ANIMATION[ANIMATION_TYPE.BOUNCE]}>
             <AiOutlineArrowDown size={32} />

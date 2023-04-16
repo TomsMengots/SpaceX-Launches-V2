@@ -27,10 +27,20 @@ const Filters = ({ limit, onChange }: IProps) => {
 
   return (
     <Flex my={8} w='100%' justifyContent='flex-end' alignItems='center'>
-      <Text fontSize='xs' fontWeight='600' mr={2}>
-        Launches Per Page:
+      <Text fontSize='sm' fontWeight='600' mr={2}>
+        Per Page:
       </Text>
-      <Select placeholder='Select option' maxW={20} icon={<MdArrowDropDown />} value={selected} onChange={onSelected}>
+      <Select
+        placeholder='Select option'
+        maxW={20}
+        borderColor='purple.500'
+        _hover={{
+          borderColor: 'purple.700',
+        }}
+        icon={<MdArrowDropDown />}
+        value={selected}
+        onChange={onSelected}
+      >
         {ITEMS_PER_PAGE_OPTIONS.map((option) => (
           <option key={option} value={option}>
             {option}

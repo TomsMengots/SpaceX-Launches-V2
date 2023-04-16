@@ -24,4 +24,24 @@ const GET_PAST_LAUNCHES = gql`
   }
 `;
 
-export { GET_PAST_LAUNCHES };
+const GET_LAUNCH_BY_ID = gql`
+  query getLaunchById($id: ID!) {
+    launch(id: $id) {
+      details
+      launch_site {
+        site_id
+        site_name
+      }
+      launch_success
+      upcoming
+      rocket {
+        rocket {
+          company
+          cost_per_launch
+        }
+      }
+    }
+  }
+`;
+
+export { GET_PAST_LAUNCHES, GET_LAUNCH_BY_ID };

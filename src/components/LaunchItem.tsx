@@ -41,7 +41,14 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
             Mission Name
           </Heading>
         </Hide>
-        <Text overflow='hidden' fontWeight={600} whiteSpace='nowrap' textOverflow='ellipsis' title={item.mission_name}>
+        <Text
+          overflow='hidden'
+          fontSize='sm'
+          fontWeight={600}
+          whiteSpace='nowrap'
+          textOverflow='ellipsis'
+          title={item.mission_name}
+        >
           {item.mission_name}
         </Text>
       </Flex>
@@ -58,7 +65,9 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
             Launch Site
           </Heading>
         </Hide>
-        <Text>{item.launch_site || '—'}</Text>
+        <Text fontSize='sm' overflow='hidden' whiteSpace='nowrap' textOverflow='ellipsis' title={item.launch_site}>
+          {item.launch_site || '—'}
+        </Text>
       </Flex>
       <Flex
         padding={{ base: 4, md: 0 }}
@@ -72,7 +81,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
             Rocket Name
           </Heading>
         </Hide>
-        <Text>{item.rocket.rocket_name}</Text>
+        <Text fontSize='sm'>{item.rocket.rocket_name}</Text>
       </Flex>
       <Flex
         padding={{ base: 4, md: 0 }}
@@ -87,7 +96,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
             Launch Date
           </Heading>
         </Hide>
-        <Text>{dateToHumanReadable(item.launch_date_utc) || '-'}</Text>
+        <Text fontSize='sm'>{dateToHumanReadable(item.launch_date_utc) || '-'}</Text>
       </Flex>
       <Flex
         padding={{ base: 4, md: 0 }}
@@ -105,7 +114,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
           colorScheme='purple'
           color='purple.500'
           variant='link'
-          fontSize='xs'
+          fontSize='x-small'
           textTransform='uppercase'
           fontWeight={700}
           justifyContent='flex-end'

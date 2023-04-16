@@ -16,7 +16,7 @@ const RocketLaunches = () => {
   const buttonColor = useColorModeValue('gray.50', 'transparent');
   const buttonHoverColor = useColorModeValue('gray.100', 'gray.900');
 
-  const { error, loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
+  const { loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
     notifyOnNetworkStatusChange: true,
     variables: { limit },
   });
@@ -45,7 +45,7 @@ const RocketLaunches = () => {
         <Show above='md'>
           <SimpleGrid columns={{ md: 5 }} spacing={4} backgroundColor={bgColor} borderTopRadius={8} px={10} py={4}>
             {TABLE_HEADINGS.map(({ title, position }, index: number) => (
-              <Heading key={`${index}-${title}`} as='h4' size='xs' textAlign={position}>
+              <Heading key={`${index}-${title}`} as='h4' fontSize='xs' textAlign={position}>
                 {title}
               </Heading>
             ))}
@@ -65,6 +65,7 @@ const RocketLaunches = () => {
             fontSize='sm'
             size='lg'
             isLoading={loading}
+            disabled={!data.launchesPast.length}
             w='100%'
             _hover={{
               bgColor: buttonHoverColor,

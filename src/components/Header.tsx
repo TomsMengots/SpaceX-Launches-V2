@@ -1,10 +1,7 @@
 import { Flex, Button, Stack, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { BsSun, BsMoonStarsFill } from 'react-icons/bs';
 import { SpaceXLogo } from 'src/components/SpaceXLogo';
-
-enum ColorModeOptions {
-  LIGHT = 'light',
-}
+import { ColorModeOptions } from 'src/core/configs/ColorModeConfig';
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();

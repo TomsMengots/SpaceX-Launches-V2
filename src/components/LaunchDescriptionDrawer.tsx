@@ -16,6 +16,8 @@ import {
 } from '@chakra-ui/react';
 import { Launch } from 'src/infrastructure/apollo/types';
 import { MdOutlineHideImage } from 'react-icons/md';
+import { GET_LAUNCH_BY_ID } from 'src/infrastructure/apollo/query';
+import { useQuery } from '@apollo/client';
 
 interface IProps {
   launch: Launch;
@@ -23,6 +25,10 @@ interface IProps {
 }
 
 const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
+  const { loading, data } = useQuery(GET_LAUNCH_BY_ID, {
+    variables: { id: launch.id },
+  });
+
   const closeDrawer = () => onClose();
   const textColor = useColorModeValue('gray.600', 'gray.300');
 
@@ -31,13 +37,13 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>{`${launch.mission_name} Launch`}</DrawerHeader>
+        <DrawerHeader mr={12}>{`${launch.mission_name} Launch`}</DrawerHeader>
         <DrawerBody>
           {!!launch.links.flickr_images.length && (
             <SimpleGrid columns={3} spacing={2}>
               {launch.links.flickr_images.slice(0, 6).map((imageUrl, index) => (
                 <Link key={`${imageUrl}-${index}`} href={imageUrl} target='_blank' rel='noopener noreferrer'>
-                  <Image src={imageUrl} h='100%' maxH={24} borderRadius={8} objectFit='cover' w='100%' />
+                  <Image src={imageUrl} h='100%' minH={24} maxH={24} borderRadius={8} objectFit='cover' w='100%' />
                 </Link>
               ))}
             </SimpleGrid>
@@ -51,6 +57,8 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
               </Text>
             </Flex>
           )}
+
+          {/* <div>{data.launch_site.site_name}</div> */}
 
           <Heading as='h6' size='sm' mt={8} mb={2}>
             Launch Details
@@ -72,7 +80,7 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
             </Link>
           </Flex>
         </DrawerBody>
-        <DrawerFooter>
+        <DrawerFooter h={24}>
           <Link
             href={launch.links.video_link}
             target='_blank'
