@@ -11,7 +11,6 @@ const Hero = () => {
       spacing={{ base: 8, md: 14 }}
       pb={{ base: 20, md: 24 }}
       pt={{ base: 20, md: 16 }}
-      minH='85vh'
       position='relative'
     >
       <Flex flexDirection='column' justifyContent='center' alignItems='center' w='100%'>
