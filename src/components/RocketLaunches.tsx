@@ -18,10 +18,11 @@ const RocketLaunches = () => {
   const buttonHoverColor = useColorModeValue('gray.100', 'gray.900');
 
   const { error, loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
+    notifyOnNetworkStatusChange: true,
     variables: { limit, sort: sortOrder },
   });
 
-  if (loading) {
+  if (loading && !data) {
     return (
       <Flex alignItems='center' justifyContent='center' w='100%' h={48}>
         <Spinner size='xl' />
