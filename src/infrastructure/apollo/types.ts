@@ -11,13 +11,11 @@ interface Launch {
 
 interface RocketModel {
   rocket_name: string;
-  rocket_type: string;
 }
 
 interface LaunchLinks {
   article_link: string;
   flickr_images: string[];
-  mission_patch: string;
   video_link: string;
 }
 

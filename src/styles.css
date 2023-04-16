@@ -7,6 +7,11 @@
   background-color: var(--dark-bacgkround);
 }
 
+.chakra-ui-dark .chakra-modal__content {
+  --dialog-dark-background: #171717;
+  background-color: var(--dialog-dark-background);
+}
+
 .neon-text {
   --clr-neon: #7d4ee5;
   color: var(--clr-neon);

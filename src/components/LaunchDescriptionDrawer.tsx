@@ -12,6 +12,7 @@ import {
   DrawerFooter,
   SimpleGrid,
   Image,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Launch } from 'src/infrastructure/apollo/types';
 import { MdOutlineHideImage } from 'react-icons/md';
@@ -23,6 +24,7 @@ interface IProps {
 
 const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
   const closeDrawer = () => onClose();
+  const textColor = useColorModeValue('gray.600', 'gray.300');
 
   return (
     <Drawer onClose={closeDrawer} isOpen={true} size='md'>
@@ -33,8 +35,8 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
         <DrawerBody>
           {!!launch.links.flickr_images.length && (
             <SimpleGrid columns={3} spacing={2}>
-              {launch.links.flickr_images.slice(0, 6).map((imageUrl) => (
-                <Link href={imageUrl} target='_blank' rel='noopener noreferrer'>
+              {launch.links.flickr_images.slice(0, 6).map((imageUrl, index) => (
+                <Link key={`${imageUrl}-${index}`} href={imageUrl} target='_blank' rel='noopener noreferrer'>
                   <Image src={imageUrl} h='100%' maxH={24} borderRadius={8} objectFit='cover' w='100%' />
                 </Link>
               ))}
@@ -44,7 +46,7 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
           {!launch.links.flickr_images.length && (
             <Flex flexDirection='column' alignItems='center' justifyContent='center' height={48}>
               <MdOutlineHideImage size={48} />
-              <Text size='lg' color='gray.600' mt='4' textTransform='capitalize'>
+              <Text fontSize='sm' color={textColor} mt='4' textTransform='capitalize'>
                 SpaceX haven't provided any images from the launch
               </Text>
             </Flex>
@@ -53,7 +55,7 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
           <Heading as='h6' size='sm' mt={8} mb={2}>
             Launch Details
           </Heading>
-          <Text color='gray.600' lineHeight='tall'>
+          <Text color={textColor} fontSize='sm' lineHeight='tall'>
             {launch.details || 'No Details Provided By SpaceX'}
           </Text>
           <Flex w='100%' justifyContent='flex-end'>

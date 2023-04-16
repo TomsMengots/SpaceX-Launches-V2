@@ -9,7 +9,6 @@ const GET_PAST_LAUNCHES = gql`
       }
       mission_name
       rocket {
-        rocket_type
         rocket_name
       }
       details
@@ -17,7 +16,6 @@ const GET_PAST_LAUNCHES = gql`
       id
       launch_date_utc
       links {
-        mission_patch
         article_link
         video_link
         flickr_images
