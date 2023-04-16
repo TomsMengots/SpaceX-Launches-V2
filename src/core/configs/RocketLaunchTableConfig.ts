@@ -1,3 +1,5 @@
+import * as CSS from 'csstype';
+
 enum TableHeading {
   MISSION_NAME = 'Mission Name',
   LAUNCH_SITE = 'Launch Site',
@@ -6,23 +8,17 @@ enum TableHeading {
   EMPTY = '',
 }
 
-enum Position {
-  start = 'start',
-  center = 'center',
-  end = 'end',
-}
-
 interface ITableHeadings {
   title: TableHeading;
-  position: keyof typeof Position;
+  position: CSS.Property.TextAlign;
 }
 
 const TABLE_HEADINGS: ITableHeadings[] = [
-  { title: TableHeading.MISSION_NAME, position: Position.start },
-  { title: TableHeading.LAUNCH_SITE, position: Position.center },
-  { title: TableHeading.ROCKET_NAME, position: Position.center },
-  { title: TableHeading.LAUNCH_DATE, position: Position.center },
-  { title: TableHeading.EMPTY, position: Position.end },
+  { title: TableHeading.MISSION_NAME, position: 'start' },
+  { title: TableHeading.LAUNCH_SITE, position: 'center' },
+  { title: TableHeading.ROCKET_NAME, position: 'center' },
+  { title: TableHeading.LAUNCH_DATE, position: 'center' },
+  { title: TableHeading.EMPTY, position: 'end' },
 ];
 
 export { TABLE_HEADINGS };

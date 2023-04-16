@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+const SPACE_X_ENDPOINT = 'https://spacex-production.up.railway.app/';
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -16,6 +17,6 @@ const cache = new InMemoryCache({
 });
 
 export const apollo = new ApolloClient({
-  uri: 'https://spacex-production.up.railway.app/',
+  uri: SPACE_X_ENDPOINT,
   cache,
 });
