@@ -1,12 +1,12 @@
 import { Filters } from 'src/components/Filters';
 import { GET_PAST_LAUNCHES } from 'src/infrastructure/apollo/query';
-import { ILaunch } from 'src/infrastructure/apollo/types';
+import { ILaunch, ILaunchesPast } from 'src/infrastructure/apollo/types';
 import { LaunchDescriptionDrawer } from 'src/components/LaunchDescriptionDrawer';
 import { LaunchItem } from 'src/components/LaunchItem';
 import { SimpleGrid, Button, Heading, useColorModeValue, Show, Flex, Spinner } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
-import { PaginationOption } from 'src/core/models/PaginationModel';
+import { PaginationOption } from 'src/core/configs/PaginationConfig';
 import { TABLE_HEADINGS } from 'src/core/configs/RocketLaunchTableConfig';
 
 const RocketLaunches = () => {
@@ -16,7 +16,12 @@ const RocketLaunches = () => {
   const buttonColor = useColorModeValue('gray.50', 'transparent');
   const buttonHoverColor = useColorModeValue('gray.100', 'gray.900');
 
-  const { loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
+  const {
+    loading,
+    fetchMore,
+    refetch,
+    data = { launchesPast: [] },
+  } = useQuery<ILaunchesPast>(GET_PAST_LAUNCHES, {
     notifyOnNetworkStatusChange: true,
     variables: { limit },
   });

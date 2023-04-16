@@ -1,7 +1,7 @@
 import { Flex, Select, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
-import { PaginationOption } from 'src/core/models/PaginationModel';
+import { PaginationOption } from 'src/core/configs/PaginationConfig';
 
 interface IProps {
   limit: PaginationOption;

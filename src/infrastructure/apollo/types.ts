@@ -1,3 +1,7 @@
+interface ILaunchesPast {
+  launchesPast: ILaunch[];
+}
+
 interface ILaunch {
   details: string;
   id: string;
@@ -19,4 +23,4 @@ interface ILaunchLinks {
   video_link: string;
 }
 
-export { ILaunch };
+export { ILaunch, ILaunchesPast };
