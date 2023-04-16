@@ -11,7 +11,6 @@ import { TABLE_HEADINGS } from 'src/core/configs/RocketLaunchTableConfig';
 
 const RocketLaunches = () => {
   const [limit, setLimit] = useState(PaginationOption.TEN);
-  const [sortOrder, setSortOrder] = useState('asc');
   const [activeLaunch, setActiveLaunch] = useState<Launch>({} as Launch);
   const bgColor = useColorModeValue('gray.100', 'purple.600');
   const buttonColor = useColorModeValue('gray.50', 'transparent');
@@ -19,7 +18,7 @@ const RocketLaunches = () => {
 
   const { error, loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
     notifyOnNetworkStatusChange: true,
-    variables: { limit, sort: sortOrder },
+    variables: { limit },
   });
 
   if (loading && !data) {

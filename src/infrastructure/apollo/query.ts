@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const GET_PAST_LAUNCHES = gql`
-  query getPastLaunches($limit: Int!, $sort: String!, $offset: Int) {
-    launchesPast(limit: $limit, sort: $sort, offset: $offset) {
+  query getPastLaunches($limit: Int!, $offset: Int) {
+    launchesPast(limit: $limit, offset: $offset) {
       mission_name
       launch_site {
         site_name_long
