@@ -1,6 +1,6 @@
 import { Filters } from 'src/components/Filters';
 import { GET_PAST_LAUNCHES } from 'src/infrastructure/apollo/query';
-import { Launch } from 'src/infrastructure/apollo/types';
+import { ILaunch } from 'src/infrastructure/apollo/types';
 import { LaunchDescriptionDrawer } from 'src/components/LaunchDescriptionDrawer';
 import { LaunchItem } from 'src/components/LaunchItem';
 import { SimpleGrid, Button, Heading, useColorModeValue, Show, Flex, Spinner } from '@chakra-ui/react';
@@ -11,7 +11,7 @@ import { TABLE_HEADINGS } from 'src/core/configs/RocketLaunchTableConfig';
 
 const RocketLaunches = () => {
   const [limit, setLimit] = useState(PaginationOption.TEN);
-  const [activeLaunch, setActiveLaunch] = useState<Launch>({} as Launch);
+  const [activeLaunch, setActiveLaunch] = useState<ILaunch>({} as ILaunch);
   const bgColor = useColorModeValue('gray.100', 'purple.600');
   const buttonColor = useColorModeValue('gray.50', 'transparent');
   const buttonHoverColor = useColorModeValue('gray.100', 'gray.900');
@@ -52,7 +52,7 @@ const RocketLaunches = () => {
           </SimpleGrid>
         </Show>
 
-        {data.launchesPast.map((launch: Launch, index: number) => (
+        {data.launchesPast.map((launch: ILaunch, index: number) => (
           <LaunchItem key={`${launch.id}-${index}`} item={launch} setActiveLaunch={setActiveLaunch} />
         ))}
 
@@ -85,7 +85,7 @@ const RocketLaunches = () => {
       </div>
 
       {activeLaunch.id && (
-        <LaunchDescriptionDrawer launch={activeLaunch} onClose={() => setActiveLaunch({} as Launch)} />
+        <LaunchDescriptionDrawer launch={activeLaunch} onClose={() => setActiveLaunch({} as ILaunch)} />
       )}
     </>
   );

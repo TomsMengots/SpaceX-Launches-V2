@@ -14,21 +14,15 @@ import {
   Image,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { Launch } from 'src/infrastructure/apollo/types';
+import { ILaunch } from 'src/infrastructure/apollo/types';
 import { MdOutlineHideImage } from 'react-icons/md';
-import { GET_LAUNCH_BY_ID } from 'src/infrastructure/apollo/query';
-import { useQuery } from '@apollo/client';
 
 interface IProps {
-  launch: Launch;
+  launch: ILaunch;
   onClose: Function;
 }
 
 const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
-  const { loading, data } = useQuery(GET_LAUNCH_BY_ID, {
-    variables: { id: launch.id },
-  });
-
   const closeDrawer = () => onClose();
   const textColor = useColorModeValue('gray.600', 'gray.300');
 
@@ -57,8 +51,6 @@ const LaunchDescriptionDrawer = ({ launch, onClose }: IProps) => {
               </Text>
             </Flex>
           )}
-
-          {/* <div>{data.launch_site.site_name}</div> */}
 
           <Heading as='h6' size='sm' mt={8} mb={2}>
             Launch Details

@@ -1,9 +1,9 @@
 import { Button, Heading, Text, useColorModeValue, Hide, Flex, SimpleGrid } from '@chakra-ui/react';
 import { dateToHumanReadable } from 'src/core/services/DateTimeUtils';
-import { Launch } from 'src/infrastructure/apollo/types';
+import { ILaunch } from 'src/infrastructure/apollo/types';
 
 interface IProps {
-  item: Launch;
+  item: ILaunch;
   setActiveLaunch: Function;
 }
 
@@ -11,7 +11,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
   const borderColor = useColorModeValue('gray.100', 'purple.600');
   const bgColor = useColorModeValue('gray.50', 'transparent');
   const hoverBgColor = useColorModeValue('gray.100', 'gray.900');
-  const setLaunch = (launch: Launch) => setActiveLaunch(launch);
+  const setLaunch = (launch: ILaunch) => setActiveLaunch(launch);
 
   return (
     <SimpleGrid

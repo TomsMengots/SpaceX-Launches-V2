@@ -1,22 +1,22 @@
-interface Launch {
+interface ILaunch {
   details: string;
   id: string;
   launch_site: string;
   launch_success: string;
-  links: LaunchLinks;
+  links: ILaunchLinks;
   mission_name: string;
-  rocket: RocketModel;
+  rocket: IRocketModel;
   launch_date_utc: string;
 }
 
-interface RocketModel {
+interface IRocketModel {
   rocket_name: string;
 }
 
-interface LaunchLinks {
+interface ILaunchLinks {
   article_link: string;
   flickr_images: string[];
   video_link: string;
 }
 
-export { Launch };
+export { ILaunch };
