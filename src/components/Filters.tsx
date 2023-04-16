@@ -11,13 +11,13 @@ interface IProps {
 const ITEMS_PER_PAGE_OPTIONS = [PaginationOption.TEN, PaginationOption.TWENTY_FIVE, PaginationOption.FIFTY];
 
 const Filters = ({ limit, onChange }: IProps) => {
-  const [selected, setSelected] = useState<PaginationOption>(PaginationOption.TWENTY_FIVE);
+  const [selected, setSelected] = useState<PaginationOption | string>(PaginationOption.TWENTY_FIVE);
   const onSelected = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     if (!target?.value) {
       return;
     }
 
-    setSelected(target.value as any);
+    setSelected(target.value);
     onChange(target.value);
   };
 

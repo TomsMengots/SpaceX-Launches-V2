@@ -9,6 +9,7 @@ enum ColorModeOptions {
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const textColor = useColorModeValue('black', 'white');
+  const colorForToggle = useColorModeValue('white', 'neutral.900');
 
   return (
     <Flex alignItems='center' justifyContent='space-between' w='100%' py={4}>
@@ -16,7 +17,13 @@ const Header = () => {
         <SpaceXLogo />
       </Stack>
 
-      <Button aria-label='Toggle Color Mode' w='fit-content' backgroundColor='transparent' onClick={toggleColorMode}>
+      <Button
+        aria-label='Toggle Color Mode'
+        w='fit-content'
+        backgroundColor={colorForToggle}
+        p={0}
+        onClick={toggleColorMode}
+      >
         {colorMode === ColorModeOptions.LIGHT ? <BsMoonStarsFill /> : <BsSun />}
       </Button>
     </Flex>

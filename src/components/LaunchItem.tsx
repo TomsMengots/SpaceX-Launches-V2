@@ -1,4 +1,5 @@
 import { Button, Heading, Text, useColorModeValue, Hide, Flex, SimpleGrid } from '@chakra-ui/react';
+import { dateToHumanReadable } from 'src/core/services/DateTimeUtils';
 import { Launch } from 'src/infrastructure/apollo/types';
 
 interface IProps {
@@ -7,7 +8,7 @@ interface IProps {
 }
 
 const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
-  const borderColor = useColorModeValue('gray.100', 'purple.900');
+  const borderColor = useColorModeValue('gray.100', 'purple.600');
   const bgColor = useColorModeValue('gray.50', 'transparent');
   const hoverBgColor = useColorModeValue('gray.100', 'gray.900');
   const setLaunch = (launch: Launch) => setActiveLaunch(launch);
@@ -49,7 +50,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
         borderBottom={{ base: '1px', md: 'none' }}
         borderColor={borderColor}
         alignItems='center'
-        justifyContent='space-between'
+        justifyContent={{ base: 'space-between', md: 'center' }}
       >
         <Hide above='md'>
           {' '}
@@ -57,14 +58,14 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
             Launch Site
           </Heading>
         </Hide>
-        <Text>{item.launch_site || '-'}</Text>
+        <Text>{item.launch_site || '—'}</Text>
       </Flex>
       <Flex
         padding={{ base: 4, md: 0 }}
         borderBottom={{ base: '1px', md: 'none' }}
         borderColor={borderColor}
         alignItems='center'
-        justifyContent='space-between'
+        justifyContent={{ base: 'space-between', md: 'center' }}
       >
         <Hide above='md'>
           <Heading as='h4' size='xs'>
@@ -78,15 +79,15 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
         borderBottom={{ base: '1px', md: 'none' }}
         borderColor={borderColor}
         alignItems='center'
-        justifyContent='space-between'
+        justifyContent={{ base: 'space-between', md: 'center' }}
       >
         <Hide above='md'>
           {' '}
           <Heading as='h4' size='xs'>
-            Launch Status
+            Launch Date
           </Heading>
         </Hide>
-        <Text>{item.launch_success || '-'}</Text>
+        <Text>{dateToHumanReadable(item.launch_date_utc) || '-'}</Text>
       </Flex>
       <Flex
         padding={{ base: 4, md: 0 }}
@@ -104,7 +105,7 @@ const LaunchItem = ({ item, setActiveLaunch }: IProps) => {
           colorScheme='purple'
           color='purple.500'
           variant='link'
-          fontSize={10}
+          fontSize='xs'
           textTransform='uppercase'
           fontWeight={700}
           justifyContent='flex-end'

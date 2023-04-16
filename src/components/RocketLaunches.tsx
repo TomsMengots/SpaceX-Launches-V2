@@ -7,24 +7,18 @@ import { SimpleGrid, Button, Heading, useColorModeValue, Show, Flex, Spinner } f
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { PaginationOption } from 'src/core/models/PaginationModel';
-
-enum TableHeading {
-  MISSION_NAME = 'Mission Name',
-  LAUNCH_SITE = 'Launch Site',
-  ROCKET_NAME = 'Rocket Name',
-  LAUNCH_STATUS = 'Launch Status',
-  EMPTY = '',
-}
+import { TABLE_HEADINGS } from 'src/core/configs/RocketLaunchTableConfig';
 
 const RocketLaunches = () => {
   const [limit, setLimit] = useState(PaginationOption.TEN);
+  const [sortOrder, setSortOrder] = useState('asc');
   const [activeLaunch, setActiveLaunch] = useState<Launch>({} as Launch);
-  const bgColor = useColorModeValue('gray.100', 'purple.900');
+  const bgColor = useColorModeValue('gray.100', 'purple.600');
   const buttonColor = useColorModeValue('gray.50', 'transparent');
   const buttonHoverColor = useColorModeValue('gray.100', 'gray.900');
 
   const { error, loading, fetchMore, refetch, data } = useQuery(GET_PAST_LAUNCHES, {
-    variables: { limit },
+    variables: { limit, sort: sortOrder },
   });
 
   if (loading) {
@@ -50,22 +44,16 @@ const RocketLaunches = () => {
       <div>
         <Show above='md'>
           <SimpleGrid columns={{ md: 5 }} spacing={4} backgroundColor={bgColor} borderTopRadius={8} px={10} py={4}>
-            {[
-              TableHeading.MISSION_NAME,
-              TableHeading.LAUNCH_SITE,
-              TableHeading.ROCKET_NAME,
-              TableHeading.LAUNCH_STATUS,
-              TableHeading.EMPTY,
-            ].map((heading, index) => (
-              <Heading key={index} as='h4' size='xs'>
-                {heading}
+            {TABLE_HEADINGS.map(({ title, position }, index: number) => (
+              <Heading key={`${index}-${title}`} as='h4' size='xs' textAlign={position}>
+                {title}
               </Heading>
             ))}
           </SimpleGrid>
         </Show>
 
-        {data.launchesPast.map((launch: Launch) => (
-          <LaunchItem key={launch.id} item={launch} setActiveLaunch={setActiveLaunch} />
+        {data.launchesPast.map((launch: Launch, index: number) => (
+          <LaunchItem key={`${launch.id}-${index}`} item={launch} setActiveLaunch={setActiveLaunch} />
         ))}
 
         <Flex w='full' alignItems='center' justifyContent='center'>
@@ -73,9 +61,10 @@ const RocketLaunches = () => {
             colorScheme='gray'
             color='purple.500'
             bgColor={buttonColor}
-            borderTopRadius='0'
+            borderTopRadius={{ base: 4, md: 0 }}
             fontSize='sm'
             size='lg'
+            isLoading={loading}
             w='100%'
             _hover={{
               bgColor: buttonHoverColor,

@@ -1,4 +1,13 @@
-.neonText {
+* {
+  font-family: 'Inter' !important;
+}
+
+.chakra-ui-dark {
+  --dark-bacgkround: #0e0d0d;
+  background-color: var(--dark-bacgkround);
+}
+
+.neon-text {
   --clr-neon: #7d4ee5;
   color: var(--clr-neon);
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
