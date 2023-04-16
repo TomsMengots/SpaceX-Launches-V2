@@ -6,12 +6,23 @@ enum TableHeading {
   EMPTY = '',
 }
 
-const TABLE_HEADINGS = [
-  { title: TableHeading.MISSION_NAME, position: 'start' as const },
-  { title: TableHeading.LAUNCH_SITE, position: 'center' as const },
-  { title: TableHeading.ROCKET_NAME, position: 'center' as const },
-  { title: TableHeading.LAUNCH_DATE, position: 'center' as const },
-  { title: TableHeading.EMPTY, position: 'end' as const },
+enum Position {
+  start = 'start',
+  center = 'center',
+  end = 'end',
+}
+
+interface ITableHeadings {
+  title: TableHeading;
+  position: keyof typeof Position;
+}
+
+const TABLE_HEADINGS: ITableHeadings[] = [
+  { title: TableHeading.MISSION_NAME, position: Position.start },
+  { title: TableHeading.LAUNCH_SITE, position: Position.center },
+  { title: TableHeading.ROCKET_NAME, position: Position.center },
+  { title: TableHeading.LAUNCH_DATE, position: Position.center },
+  { title: TableHeading.EMPTY, position: Position.end },
 ];
 
 export { TABLE_HEADINGS };
